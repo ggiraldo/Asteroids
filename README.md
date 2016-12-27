@@ -1,5 +1,7 @@
 ## Asteroids
 
+You can play the game at: https://ggiraldo.github.io/
+
 This is an asteroids game developed in HTML5 and Javascript, mainly with the help
 of the https://p5js.org/ library.
 
