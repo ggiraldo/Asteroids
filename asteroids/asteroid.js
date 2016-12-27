@@ -21,7 +21,7 @@ function Asteroid(x, y, r) {
     }
 
     this.particle.vel = p5.Vector.random2D();
-    this.corners = floor(random(4,9));
+    this.corners = floor(random(5,9));
     
     this.radii = [];
     for(var i = 0; i < this.corners; i++) {

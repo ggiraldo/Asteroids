@@ -114,6 +114,12 @@ function GameLevel(level) {
         }
     }
 
+    this.fire = function () {
+        this.lasers.push(new Laser(this.ship.particle.pos.x, 
+                                   this.ship.particle.pos.y, 
+                                   this.ship.theta));
+    }
+
     this.keyPressed = function(key) {
 
         if (key == 'D') {
@@ -125,9 +131,7 @@ function GameLevel(level) {
         } if (key == 'S') {
             this.thrust = -1;
         } if (key == ' ') {
-            this.lasers.push(new Laser(this.ship.particle.pos.x, 
-                                       this.ship.particle.pos.y, 
-                                       this.ship.theta));
+            this.fire();
         }
     }
 
