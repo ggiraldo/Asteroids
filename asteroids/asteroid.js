@@ -60,16 +60,14 @@ function Asteroid(x, y, r) {
 
     this.split = function() {
         var childs = [];
+        var rNew = floor(this.r / 2);
+        var vNew = this.particle.vel.mag() * 2.0; // factor between 2.0 and 4.0
 
-        if(this.r > this.rMin*2){
-            childs.push(new Asteroid(this.particle.pos.x, 
-                                     this.particle.pos.y, 
-                                     floor(this.r/2)));
-            childs.push(new Asteroid(this.particle.pos.x, 
-                                     this.particle.pos.y, 
-                                     floor(this.r/2)));
-            childs[0].particle.vel.setMag(this.particle.vel.mag()*1.5);
-            childs[1].particle.vel.setMag(this.particle.vel.mag()*1.5);
+        if(rNew > this.rMin){
+            childs.push(new Asteroid(this.particle.pos.x, this.particle.pos.y, rNew));
+            childs.push(new Asteroid(this.particle.pos.x, this.particle.pos.y, rNew));
+            childs[0].particle.vel.setMag(vNew);
+            childs[1].particle.vel.setMag(vNew);
         }
         return childs;
     }
