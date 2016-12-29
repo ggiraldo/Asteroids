@@ -3,6 +3,9 @@ function Asteroid(x, y, r) {
     this.rMin = 15;
     this.rMax = 120;
     this.r = r || floor(random(this.rMin, this.rMax));
+    this.theta = 0.0;
+    this.omegaMax = 0.05
+    this.omega = map(random(), 0, 1, -this.omegaMax, this.omegaMax);
     this.particle = new Particle(width/2, height/2);
 
     // Avoid asteroids from spawning at center,
@@ -31,6 +34,7 @@ function Asteroid(x, y, r) {
     this.update = function() {
         this.particle.update();
         this.particle.edges();
+        this.theta += this.omega; 
     }
 
     this.render = function() {
@@ -38,6 +42,7 @@ function Asteroid(x, y, r) {
         stroke(255);
         fill(51);
         translate(this.particle.pos.x, this.particle.pos.y);
+        rotate(this.theta);
         beginShape();
         for(var i = 0; i < this.corners; i++) {
             var angle = map(i, 0, this.corners, 0, TWO_PI);
